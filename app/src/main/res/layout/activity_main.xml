@@ -13,14 +13,14 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:id="@+id/a1"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="93dp"
         android:src="@drawable/green"
                 android:height="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="53dp"
-        android:layout_marginStart="53dp" />
+        android:layout_marginRight="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_below="@+id/mov_inp"
+        android:layout_toLeftOf="@+id/a2"
+        android:layout_toStartOf="@+id/a2" />
 
     <ImageButton
         android:layout_width="20dp"
@@ -28,11 +28,11 @@
         android:id="@+id/a2"
         android:src="@drawable/green"
         android:height="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
         android:layout_alignTop="@+id/a1"
-        android:layout_toRightOf="@+id/a1"
-        android:layout_toEndOf="@+id/a1" />
+        android:layout_toLeftOf="@+id/a3"
+        android:layout_toStartOf="@+id/a3" />
 
     <ImageButton
         android:layout_width="20dp"
@@ -54,5 +54,45 @@
         android:layout_toEndOf="@+id/a3"
         android:layout_marginLeft="33dp"
         android:layout_marginStart="33dp" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/mov_inp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/a1"
+        android:layout_toEndOf="@+id/a1"
+        android:layout_marginTop="73dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        android:id="@+id/book"
+        android:layout_below="@+id/a1"
+        android:layout_toLeftOf="@+id/a2"
+        android:layout_toStartOf="@+id/a2"
+        android:layout_marginTop="82dp"
+        android:onClick="bookTickets" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="37dp"
+        android:text="display"
+        android:layout_below="@+id/book"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tick_disp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display"
+        android:id="@+id/tick_disp_but"
+        android:layout_alignTop="@+id/book"
+        android:layout_alignLeft="@+id/a4"
+        android:layout_alignStart="@+id/a4"
+        android:onClick="printDatabase" />
 
 </RelativeLayout>
