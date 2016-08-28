@@ -23,6 +23,12 @@ public class MovieDBHandler extends SQLiteOpenHelper{
     public static final String col_nseats="nseats";
     public static final String col_seats="seats";
 
+    public static final String mov_table="mov_movieTickets";
+    public static final String col_mov_mid="mov_mid";
+    public static final String col_mov_mname="mov_mname";
+    public static final String col_mov_nseats="mov_nseats";
+    public static final String col_mov_seats="mov_seats";
+
     public MovieDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
@@ -50,7 +56,7 @@ public class MovieDBHandler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addSeats(Movie movie){
+    /*public void addSeats(Movie movie){
 
 
         Log.i("msg", "in add seats");
@@ -65,6 +71,57 @@ public class MovieDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db=this.getWritableDatabase();
         db.insert(table, null, values);
         db.close();
+
+
+    }*/
+
+    public void addSeats(String mname, int nseats, String seats){
+
+        SQLiteDatabase db=this.getWritableDatabase();
+        int found=0;
+        String seat_str="";
+        int nseat_int;
+        int i=0;
+
+        Log.i("msg", "in add seats");
+
+        String query ="SELECT * FROM "+table+";";
+        Cursor c=db.rawQuery(query, null);
+        c.moveToFirst();
+
+
+        while(!c.isAfterLast()) {
+            i+=1;
+            Log.i("msg", "ENTERED WHILE LOOP of addSeats at" +i+"location");
+            Log.i("msg", "#"+c.getString(c.getColumnIndex("mname"))+"#");
+
+            if (Objects.equals(c.getString(c.getColumnIndex("mname")), mname)){
+                Log.i("msg", "ENTERED if of addSeats at" +i+"location");
+                found=1;
+                seat_str=c.getString(c.getColumnIndex("seats"));
+                seat_str+=seats;
+                nseat_int=c.getInt(c.getColumnIndex("nseats"));
+                nseat_int+=1;
+                db.execSQL("UPDATE "+table+" SET "+col_seats+"= '"+seat_str+"' WHERE mname = '"+mname+"';");
+                db.execSQL("UPDATE "+table+" SET "+col_nseats+"="+nseat_int+" WHERE mname = '"+mname+"';");
+                break;
+            }
+            c.moveToNext();
+        }
+
+        if(found==0) {
+            Movie movie = new Movie(mname, nseats, seats);
+            ContentValues values = new ContentValues();
+
+
+            values.put(col_mname, movie.getMname());
+            values.put(col_nseats, movie.getNseats());
+            values.put(col_seats, movie.getSeats());
+
+
+            db.insert(table, null, values);
+            db.close();
+        }
 
 
     }
@@ -109,7 +166,7 @@ public class MovieDBHandler extends SQLiteOpenHelper{
         Log.i("msg", "ENTERED DATABSETOSTRING");
         String query ="SELECT * FROM "+table+" WHERE mname="+"'"+m+"'";
 
-        Cursor c=db.rawQuery(query, new String[] {table, col_mname});
+        Cursor c=db.rawQuery(quedeepdry, new String[] {table, col_mname});
 
         Log.i("msg", query);
 

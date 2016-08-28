@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_indi_movie_select);
 
 
         mov_inp = (EditText) findViewById(R.id.mov_inp);
@@ -42,12 +42,11 @@ public class MainActivity extends AppCompatActivity {
         a3.setTag("0");
         a4.setTag("0");
 
-
         a1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 if (a1.getTag() == "0") {
-                    a1.setImageResource(R.drawable.red);
+                    a1.setImageResource(R.drawable.grey);
                     a1.setTag("a1");
                 } else {
                     a1.setImageResource(R.drawable.green);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (a2.getTag() == "0") {
-                    a2.setImageResource(R.drawable.red);
+                    a2.setImageResource(R.drawable.grey);
                     a2.setTag("a2");
                 } else {
                     a2.setImageResource(R.drawable.green);
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (a3.getTag() == "0") {
-                    a3.setImageResource(R.drawable.red);
+                    a3.setImageResource(R.drawable.grey);
                     a3.setTag("a3");
                 } else {
                     a3.setImageResource(R.drawable.green);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (a4.getTag() == "0") {
-                    a4.setImageResource(R.drawable.red);
+                    a4.setImageResource(R.drawable.grey);
                     a4.setTag("a4");
                 } else {
                     a4.setImageResource(R.drawable.green);
@@ -103,23 +102,25 @@ public class MainActivity extends AppCompatActivity {
         String seats = " ";
         if (a1.getTag() == "a1") {
             nseats++;
-            seats += "a1";
+            seats += "a1 ";
         }
         if (a2.getTag() == "a2") {
             nseats++;
-            seats += "a2";
+            seats += "a2 ";
         }
         if (a3.getTag() == "a3") {
             nseats++;
-            seats += "a3";
+            seats += "a3 ";
         }
         if (a4.getTag() == "a4") {
             nseats++;
-            seats += "a4";
+            seats += "a4 ";
         }
 
-        Movie movie = new Movie(mname, nseats, seats);
-        mdbHandler.addSeats(movie);
+        /*Movie movie = new Movie(mname, nseats, seats);
+        mdbHandler.addSeats(movie);*/
+
+        mdbHandler.addSeats(mname, nseats, seats);
 
         a1.setImageResource(R.drawable.green);
         a1.setTag("0");

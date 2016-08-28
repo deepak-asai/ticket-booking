@@ -38,22 +38,22 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:id="@+id/a3"
-        android:src="@drawable/green"
         android:height="20dp"
         android:layout_alignTop="@+id/a2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/green" />
 
     <ImageButton
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:id="@+id/a4"
-        android:src="@drawable/green"
         android:height="20dp"
         android:layout_alignTop="@+id/a3"
         android:layout_toRightOf="@+id/a3"
         android:layout_toEndOf="@+id/a3"
         android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp" />
+        android:layout_marginStart="33dp"
+        android:src="@drawable/green" />
 
     <EditText
         android:layout_width="100dp"
